@@ -20,7 +20,7 @@ This format makes up the file table used for kFS
 ### Sections
 
 Index | Stores | Type | Limits | Extra notes
-- | - | - | - | - 
+-- | - | - | - | - 
 1 | File index | 64 bit unsigned int | < number of files |
 2 | SHA-256 filename hash | 32 byte hash |  |
 3 | Start sector | 64 bit unsigned int | =< number of sectors  | 
