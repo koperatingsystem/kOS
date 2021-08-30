@@ -1,6 +1,6 @@
 # Standards
 
-This folder contains all the standardized components of the k Operating System
+This folder contains all the standardized components of the k Operating System.
 
 ## Index
 

@@ -1,6 +1,6 @@
 # kFS File Index format
 
-This format makes up the file table used for kFS
+This format makes up the file table used for kFS.
 
 ## Layout
 
@@ -31,5 +31,5 @@ TODO: Add permissions
 
 ### Root folder
 
-The root folder's file index is always 0<br>
-In the root folder section 5 is not present since it is not needed, there is no parent folder for the root folder
+The root folder's file index is always 0.<br>
+In the root folder section 5 is not present since it is not needed, there is no parent folder for the root folder.

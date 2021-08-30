@@ -1,6 +1,6 @@
 # kFS File Storage format
 
-This format is used for actual file storage for kFS
+This format is used for actual file storage for kFS.
 
 ## Layout
 
@@ -30,4 +30,4 @@ Index | Stores | Type | Limits | Extra notes
 
 ### Next and Last sector sections
 
-If section 3 is set then section 5 won't be present and if section 2 is set then section 4 won't be present
+If section 3 is set then section 5 won't be present and if section 2 is set then section 4 won't be present.
