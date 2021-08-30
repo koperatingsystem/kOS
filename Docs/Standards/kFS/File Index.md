@@ -21,11 +21,11 @@ This format makes up the file table used for kFS
 
 Index | Stores | Type | Limits | Extra notes
 -- | - | - | - | - 
-1 | File index | 64 bit unsigned int | < number of files |
-2 | SHA-256 filename hash | 32 byte hash |  |
-3 | Start sector | 64 bit unsigned int | =< number of sectors  | 
-4 | Is folder? toggle | 1 bit boolean | =< number of sectors |  File = False<br>Folder = True
-5 | Parent folder | 64 bit unsigned int | < number of files | [Root folder](#root-folder)
+1 | File index | uint64_t | < number of files |
+2 | SHA-256 filename hash | char[32] |  |
+3 | Start sector | uint64_t | =< number of sectors  | 
+4 | Is folder? toggle | boolean | =< number of sectors |  File = False<br>Folder = True
+5 | Parent folder | uint64_t | < number of files | [Root folder](#root-folder)
 
 TODO: Add permissions
 

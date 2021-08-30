@@ -20,13 +20,13 @@ This format is used for actual file storage for kFS
 ### Sections
 Index | Stores | Type | Limits | Extra notes
 -- | - | - | - | - 
-1 | File index on table | 64 bit unsigned int | < number of files
-2 | Is last sector | 1 bit boolean
-3 | Is first sector |1 bit boolean
-4 | Next sector | 64 bit unsigned int | =< number of sectors | [Next/Last sector sections](#next-and-last-sector-sections)
-5 | Last sector | 64 bit unsigned int) | =< number of sectors |  [Next/Last sector sections](#next-and-last-sector-sections)
-6 | Length of data on sector | 2 byte unsigned int | < smaller than sector size
-7 | File data | Variable length data | length < sector size
+1 | File index on table | uint64_t | < number of files
+2 | Is last sector | boolean
+3 | Is first sector | boolean
+4 | Next sector | uint64_t | =< number of sectors | [Next/Last sector sections](#next-and-last-sector-sections)
+5 | Last sector | uint64_t | =< number of sectors |  [Next/Last sector sections](#next-and-last-sector-sections)
+6 | Length of data on sector | uint16_t | < smaller than sector size
+7 | File data | char*| length < sector size
 
 ### Next and Last sector sections
 
