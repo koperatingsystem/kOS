@@ -33,7 +33,7 @@ enum kFS_File_Index_Attributes
 | Offset | Content | Type | Limits | Extra notes
 |---|---|---|---|---|
 | 0 | Path hash (SHA-512) | `uint8_t[64]` |  |
-| 64 | (Storage header) sector | `uint64_t` | Must be smaller than the number of sectors. | That sector contains the [File Storage header](#File-Storage). Followed by the data. |
+| 64 | (Storage header) sector | `uint64_t` | Must be smaller than the number of sectors, must not collide with the file indexes. | That sector contains the [File Storage header](#File-Storage). Followed by the data. Set to 0 for folders. |
 | 72 | Path hash of the parent folder | `uint8_t[64]` |  | This is set to 0 for the root folder. |
 | 136 | Attributes | `uint16_t` |  | See below. |
 
