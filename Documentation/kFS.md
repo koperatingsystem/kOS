@@ -9,7 +9,8 @@ This document is subject to change.
 There are two formats used in kFS - the [File Index header](#File-Index) (used for the file indexes) and the [File Storage header](#File-Storage) (used to store the data).  
 The file index table starts at the top of the partition's available space (first sector -> last sector), and the file storage sectors go from the bottom of the partition's available space (last sector -> first sector).
 
-Every data sector contains its own data sector.
+Every data sector contains its own data sector.  
+Every sector is 4 KiB large.
 
 ## Headers
 ### File Index
