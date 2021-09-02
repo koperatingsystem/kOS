@@ -20,7 +20,7 @@ typedef struct kFS_File_Index
 {
     uint8_t[64] path_hash;
     uint64_t    sector;
-    uint64_t    parent_folder;
+    uint8_t[64] parent_folder_hash;
     uint16_t    attributes;
 } kFS_File_Index;
 
