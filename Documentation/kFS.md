@@ -45,11 +45,10 @@ enum kFS_File_Index_Entry_Attributes
 
 typedef struct kFS_File_Storage_Header
 {
-    uint8_t[64] path_hash;
     uint16_t    attributes;
+    uint16_t    size_data_on_sector;
     uint64_t    sector_next;
     uint64_t    sector_previous;
-    uint16_t    size_data_on_sector;
     uint8_t*    data;
 } kFS_File_Storage_Header;
 
@@ -62,12 +61,11 @@ enum kFS_File_Storage_Header_Attributes
 
 | Offset | Content | Type | Limits | Extra notes |
 |---|---|---|---|---|
-| 0 | Path hash | `uint8_t[64]` |  |  |
-| 64 | Attributes | `uint16_t` |  | See below. |
-| 66 | Next sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be bigger than the previous sector. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_Last_Sector` is set. |
-| 74 | Previous sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be smaller than the next sector unless it's 0. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_First_Sector` is set. |
-| 82 | Size of the data on the sector | `uint16_t` | Must be smaller than the sector size. |
-| 84 | File data | `uint8_t*` | The length of the data is always smaller or equal to the cumulative size of the sectors used. |
+| 0 | Attributes | `uint16_t` |  | See below. |
+| 2 | Size of the data on the sector | `uint16_t` | Must be smaller than the sector size. |
+| 4 | Next sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be bigger than the previous sector. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_Last_Sector` is set. |
+| 12 | Previous sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be smaller than the next sector unless it's 0. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_First_Sector` is set. |
+| 20 | File data | `uint8_t*` | The length of the data is always smaller or equal to the cumulative size of the sectors used. |
 
 | Bit | Attribute | Notes |
 |---|---|---|
