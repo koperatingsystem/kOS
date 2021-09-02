@@ -9,6 +9,8 @@ This document is subject to change.
 There are two formats used in kFS - the [File Index header](#File-Index) (used for the file indexes) and the [File Storage header](#File-Storage) (used to store the data).  
 The file index table starts at the top of the partition's available space (first sector -> last sector), and the file storage sectors go from the bottom of the partition's available space (last sector -> first sector).
 
+Every data sector contains its own data sector.
+
 ## Headers
 ### File Index
 ```c
@@ -62,10 +64,10 @@ enum kFS_File_Storage_Header_Attributes
 | Offset | Content | Type | Limits | Extra notes |
 |---|---|---|---|---|
 | 0 | Attributes | `uint16_t` |  | See below. |
-| 2 | Size of the data on the sector | `uint16_t` | Must be smaller than the sector size. |
+| 2 | Size of the data on the sector | `uint16_t` | Must be smaller than the sector size. |  |
 | 4 | Next sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be bigger than the previous sector. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_Last_Sector` is set. |
 | 12 | Previous sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be smaller than the next sector unless it's 0. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_First_Sector` is set. |
-| 20 | File data | `uint8_t*` | The length of the data is always smaller or equal to the cumulative size of the sectors used. |
+| 20 | File data | `uint8_t*` | Must be smaller than the sector size minus 20 (the storage header size). | Example: With a sector size of 512KiB, `512 * 1024 - 20` would mean there are `524268` bytes left for raw data. |
 
 | Bit | Attribute | Notes |
 |---|---|---|
