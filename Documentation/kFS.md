@@ -65,8 +65,8 @@ enum kFS_File_Storage_Header_Attributes
 |---|---|---|---|---|
 | 0 | Attributes | `uint16_t` |  | See below. |
 | 2 | Size of the data on the sector | `uint16_t` | Must be smaller than the size of each sector minus 20 bytes (the header size). |  |
-| 4 | Next sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be bigger than the previous sector. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_Last_Sector` is set. |
-| 12 | Previous sector | `uint64_t` | Must be smaller or equal to the number of sectors available in total. Must be smaller than the next sector unless it's 0. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_First_Sector` is set. |
+| 4 | Next sector | `uint64_t` | Must be smaller than or equal to the number of sectors available in total. Must be bigger than the previous sector. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_Last_Sector` is set. |
+| 12 | Previous sector | `uint64_t` | Must be smaller than the number of sectors available in total. Must be smaller than the next sector unless it's 0. | Set to 0 if `kFS_File_Storage_Header_Attributes_Is_First_Sector` is set. |
 | 20 | File data | `uint8_t*` |  |  |
 
 | Bit | Attribute | Notes |
