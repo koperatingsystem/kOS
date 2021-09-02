@@ -10,7 +10,8 @@ There are two formats used in kFS - the [File Index header](#File-Index) (used f
 The file index table starts at the top of the partition's available space (first sector -> last sector), and the file storage sectors go from the bottom of the partition's available space (last sector -> first sector).
 
 Every data sector contains its own data sector.  
-Every sector is 4 KiB large.
+Every sector is 4 KiB large.  
+All hashes mentioned are SHA512 hashes.  
 
 ## Headers
 ### File Index
@@ -33,7 +34,7 @@ enum kFS_File_Index_Entry_Attributes
 
 | Offset | Content | Type | Limits | Extra notes
 |---|---|---|---|---|
-| 0 | Path hash (SHA-512) | `uint8_t[64]` |  |
+| 0 | Path hash | `uint8_t[64]` |  |
 | 64 | (Storage header) sector | `uint64_t` | Must be smaller than the number of sectors, must not collide with the file indexes. | That sector contains the [File Storage header](#File-Storage). Followed by the data. Set to 0 for folders. |
 | 72 | Path hash of the parent folder | `uint8_t[64]` |  | This is set to 0 for the root folder. |
 | 136 | Attributes | `uint16_t` |  | See below. |
