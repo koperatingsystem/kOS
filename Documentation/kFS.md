@@ -11,8 +11,6 @@ The file index table starts at the top of the partition's available space (first
 
 ## Headers
 ### File Index
-This format makes up the file table used for kFS.
-
 ```c
 // NOTE: this is NOT packed to keep up speed.
 
