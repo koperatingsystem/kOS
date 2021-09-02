@@ -16,17 +16,17 @@ This format makes up the file table used for kFS.
 ```c
 // NOTE: this is NOT packed to keep up speed.
 
-typedef struct kFS_File_Index
+typedef struct kFS_File_Index_Entry
 {
     uint8_t[64] path_hash;
     uint64_t    sector;
     uint8_t[64] parent_folder_hash;
     uint16_t    attributes;
-} kFS_File_Index;
+} kFS_File_Index_Entry;
 
-enum kFS_File_Index_Attributes
+enum kFS_File_Index_Entry_Attributes
 {
-    kFS_File_Index_Attributes_Is_Folder  = 1 << 0,
+    kFS_File_Index_Entry_Attributes_Is_Folder  = 1 << 0,
 };
 ```
 
