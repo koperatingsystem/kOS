@@ -24,11 +24,13 @@ typedef struct kFS_File_Index_Entry
     uint64_t    sector;
     uint8_t[64] parent_folder_hash;
     uint16_t    attributes;
+    
 } kFS_File_Index_Entry;
 
 enum kFS_File_Index_Entry_Attributes
 {
     kFS_File_Index_Entry_Attributes_Is_Folder  = 1 << 0,
+    kFS_File_Index_Entry_Attributes_Has_Name   = 1 << 1,
 };
 ```
 
@@ -42,6 +44,7 @@ enum kFS_File_Index_Entry_Attributes
 | Bit | Attribute |
 |---|---|
 | 0 | Sets whether this file is a folder. |
+| 1 | Sets whether this file has a name. |
 
 ### File Storage
 ```c
@@ -73,5 +76,5 @@ enum kFS_File_Storage_Header_Attributes
 
 | Bit | Attribute | Notes |
 |---|---|---|
-| 0 | Sets whether this is the first sector for the file or not. | Incompatible with bit 1. |
-| 1 | Sets whether this is the last sector for the file or not. | Incompatible with bit 0. |
+| 0 | Sets whether this is the first sector for the file or not. | |
+| 1 | Sets whether this is the last sector for the file or not. | |
